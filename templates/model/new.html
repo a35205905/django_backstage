@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% load bootstrap4 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% block head %}
+    {{ form.media }}
+{% endblock %}
+
+{% block body %}
+    <div class="'row">
+        <div class="col-6 offset-3">
+            <h1>{{ model_name }} {% if model_method == 'new' %} 新增 {% elif model_method == 'edit' %} 編輯 {% endif %}</h1>
+            <hr>
+            <form action="" method="post" class="form" enctype="multipart/form-data">
+                {% csrf_token%}
+                {% bootstrap_form form %}
+                {% buttons %}
+                    <button type="submit" class="btn btn-primary">儲存</button>
+                    <a href="/model/{{ model }}/"><button type="button" class="btn btn-outline-primary">返回</button></a>
+                {% endbuttons %}
+            </form>
+        </div>
+    </div>
+{% endblock %}

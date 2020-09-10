@@ -1,0 +1,6 @@
+{% if model_permissions.change %}
+    <a href="/model/{{ model }}/{{ record.id }}/edit/"><button class="btn btn-outline-secondary">編輯</button></a>
+{% endif %}
+{% if model_permissions.delete %}
+    <button class="btn btn-outline-danger" onclick="delete_check({{ record.id }})">刪除</button>
+{% endif %}

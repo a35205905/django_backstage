@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'django_tables2',
+    'bootstrap4',
+
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -136,6 +141,17 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# 無登入權限路由
+LOGIN_URL = '/login/'
+# 預設登入路由
+LOGIN_REDIRECT_URL = '/model/user/'
+# 預設登出路由
+LOGOUT_REDIRECT_URL = '/login/'
+
+BOOTSTRAP4 = {
+    'include_jquery': True,
+}
+
 # log日誌
 LOGGING = {
     'version': 1,
@@ -168,3 +184,10 @@ LOGGING = {
         # TODO
     },
 }
+
+# <--------自定義-------------------->
+
+# 前端使用的model
+MODELS = ('user', 'group')
+# LOG預設角色
+LOGGING_ROLE = 'develop'

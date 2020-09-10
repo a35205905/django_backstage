@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% load bootstrap4 %}
+
+{% block body %}
+    <div class="'row">
+        <div class="col-6 offset-3">
+            <h1>登入</h1>
+            <hr>
+            <form action="" method="post" class="form">
+              {% csrf_token %}
+              {% bootstrap_form form %}
+                <a href="{% url 'register' %}">尚未註冊？</a>
+              {% buttons %}
+                <button type="submit" class="btn btn-primary">
+                    送出
+                </button>
+              {% endbuttons %}
+            </form>
+        </div>
+    </div>
+{% endblock %}
