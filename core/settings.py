@@ -20,10 +20,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'tot*kd#l@u=za5o8sqoos5hckxuz#q+l6jc3s7q+p&e*_=g1#='
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ['DEBUG']
 
 ALLOWED_HOSTS = ['*']
 
@@ -128,8 +128,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
+API_PATH = os.environ['BACKSTAGE_URL']
 
-STATIC_URL = '/static/'
+STATIC_URL = os.path.join(API_PATH, 'static/')
 # 部署靜態資源路徑 配合以下指令
 # $ python manage.py collectstatic
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
@@ -138,15 +139,15 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'common_static/')
 ]
 # 附件路徑 
-MEDIA_URL = '/media/'
+MEDIA_URL = os.path.join(API_PATH, 'media/')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # 無登入權限路由
-LOGIN_URL = '/login/'
+LOGIN_URL = os.path.join(API_PATH, 'login/')
 # 預設登入路由
-LOGIN_REDIRECT_URL = '/model/user/'
+LOGIN_REDIRECT_URL = os.path.join(API_PATH, 'model/user/')
 # 預設登出路由
-LOGOUT_REDIRECT_URL = '/login/'
+LOGOUT_REDIRECT_URL = os.path.join(API_PATH, 'login/')
 
 BOOTSTRAP4 = {
     'include_jquery': True,
