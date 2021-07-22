@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     'django_tables2',
     'bootstrap4',
+    'rest_framework',
+    'rest_framework_simplejwt',
 
     'user',
 ]
@@ -148,6 +150,22 @@ LOGIN_URL = os.path.join(API_PATH, 'login/')
 LOGIN_REDIRECT_URL = os.path.join(API_PATH, 'model/user/')
 # 預設登出路由
 LOGOUT_REDIRECT_URL = os.path.join(API_PATH, 'login/')
+
+REST_FRAMEWORK = {
+    # API Docs
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.AutoSchema',
+    # 權限控管
+    # 'DEFAULT_PERMISSION_CLASSES': (
+    #     'rest_framework.permissions.IsAuthenticated',
+    # ),
+    # 認證方式
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        # JWT
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+}
 
 BOOTSTRAP4 = {
     'include_jquery': True,

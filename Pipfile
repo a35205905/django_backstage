@@ -17,6 +17,10 @@ zipp = "==3.1.0"
 Django = "==3.0.8"
 Pillow = "==7.2.0"
 PyMySQL = "==0.10.0"
+djangorestframework = "*"
+markdown = "*"
+django-filter = "*"
+djangorestframework-simplejwt = "*"
 
 [dev-packages]
 
