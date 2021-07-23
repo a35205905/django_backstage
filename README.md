@@ -66,9 +66,15 @@ OS
 ```shell
 $ sudo apt update
 ```
+
+安裝pip
+```shell
+$ sudo apt install python3-pip
+```
+
 安裝虛擬環境
 ```shell
-$ sudo apt-get install python3-venv
+$ pip3 install pipenv
 ```
 
 在使用`pip`安裝`mysqlclient`時要**根據**版本來下載相關的Ubuntu套件，預設版本為[mysqlclient 2.0.1](https://pypi.org/project/mysqlclient/2.0.1/)

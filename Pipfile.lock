@@ -1,11 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "239597989ee1a5538bccd9c24ef9890de97849e2e9028fd9e3ab769f2d29015e"
+            "sha256": "7939f21587bf493645418a0ae7dc1d954282343d07d48779deac28c6efc6e7e8"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.7"
+            "python_version": "3.6.9"
         },
         "sources": [
             {
@@ -75,11 +75,11 @@
         },
         "djangorestframework-simplejwt": {
             "hashes": [
-                "sha256:1884177b14a9097a98821dca9e76d87d6345bd7a2124a96c249c7eed3677e87b",
-                "sha256:2b53a093f74a60fd27c5be73f47c2e0b11e51af204b72a8b93769733a844e7bb"
+                "sha256:288ee78618d906f26abf6282b639b8f1806ce1d9a7578897a125cf79c609f259",
+                "sha256:c315be70aa12a5f5790c0ab9acd426c3a58eebea65a77d0893248c5144a5080c"
             ],
             "index": "pypi",
-            "version": "==4.7.2"
+            "version": "==4.4.0"
         },
         "importlib-metadata": {
             "hashes": [
