@@ -21,6 +21,7 @@ djangorestframework = "*"
 markdown = "*"
 django-filter = "*"
 djangorestframework-simplejwt = "*"
+cryptography = "*"
 
 [dev-packages]
 
