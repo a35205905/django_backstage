@@ -5,6 +5,7 @@
 - Python：3.7
 
 ## 安裝方式
+
 ### 虛擬環境
 ```shell
 安裝虛擬環境
@@ -19,20 +20,10 @@ $ pipenv shell
 $ pipenv install
 ```
 
-### 資料庫遷移
-編輯`env/lib/python3.7/site-packages/django/db/backends/mysql/base.py`註解下列程式碼
-```python
-version = Database.version_info
-#if version < (1, 3, 13):
-#    raise ImproperlyConfigured('mysqlclient 1.3.13 or newer is required; you have %s.' % Database.__version__)
-```
-> Python版本依據該環境為主
-
-
 ### .env
 複製 `.env`
 ```shell
-$ cp .env.example .env
+$ cp core/.env.example core/.env
 ```
 > 編輯`.env`並修改`DB_HOST`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`, `DEBUG`
 
@@ -45,7 +36,7 @@ $ python3 manage.py migrate
 
 ### 建立超級使用者帳號
 ```shell
-python3 manage.py createsuperuser
+$ python3 manage.py createsuperuser
 ```
 
 ### 啟動開發伺服器
@@ -143,7 +134,7 @@ $ vim django.conf
         </Files>
     </Directory>
 
-    WSGIDaemonProcess core python-path=/var/app/<PROJECT> python-home=/var/app/<PROJECT>/env
+    WSGIDaemonProcess core python-path=/var/app/<PROJECT> python-home=/var/app/<PROJECT>/.venv
     WSGIProcessGroup core
     WSGIScriptAlias / /var/app/<PROJECT>/core/wsgi.py
 
