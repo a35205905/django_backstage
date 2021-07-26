@@ -17,11 +17,8 @@ logger = logging.getLogger(settings.LOGGING_ROLE)
 def index(request, model):
     _model = get_model_by_content_type(model)
     # 排序
-    sort = request.GET.get('sort')
-    if sort:
-        _objects = _model.objects.all().order_by(sort)
-    else:
-        _objects = _model.objects.all().order_by('id')
+    sort = request.GET.get('sort', 'id')
+    _objects = _model.objects.all().order_by(sort)
     # table 一定要為大駝峰命名(ex. UserTable)
     table = globals()[get_pascal_name(model, 'Table')](_objects)
     table.paginate(page=request.GET.get("page", 1), per_page=25)
