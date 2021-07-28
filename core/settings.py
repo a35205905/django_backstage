@@ -37,6 +37,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    # Core
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,11 +45,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Package
     'django_tables2',
     'bootstrap4',
     'rest_framework',
+    'django_filters',
     'rest_framework_simplejwt',
 
+    # Custom
     'user',
 ]
 
