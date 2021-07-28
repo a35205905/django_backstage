@@ -16,11 +16,11 @@ logger = logging.getLogger(settings.LOGGING_ROLE)
 @user_passes_test(permission_check, login_url='/', redirect_field_name='')
 def index(request, model):
     _model = get_model_by_content_type(model)
+    _objects = _model.objects.all()
     # 排序
-    sort = request.GET.get('sort', 'id')
-    _objects = _model.objects.all().order_by(sort)
+    sort = request.GET.get('sort', '-id')
     # table 一定要為大駝峰命名(ex. UserTable)
-    table = globals()[get_pascal_name(model, 'Table')](_objects)
+    table = globals()[get_pascal_name(model, 'Table')](_objects, order_by=sort)
     table.paginate(page=request.GET.get("page", 1), per_page=25)
     model_name = _model._meta.verbose_name.title()
 
