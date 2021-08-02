@@ -23,6 +23,7 @@ django-filter = "*"
 djangorestframework-simplejwt = "*"
 cryptography = "*"
 django-environ = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 

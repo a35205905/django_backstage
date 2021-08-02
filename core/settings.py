@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'rest_framework_simplejwt',
+    'corsheaders',
 
     # Custom
     'user',
@@ -60,6 +61,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -241,6 +243,14 @@ LOGGING = {
         # TODO
     },
 }
+
+# CORS
+# 允許所有來源
+CORS_ALLOW_ALL_ORIGINS = True
+# 若不接受所有來源，也可以自訂義白名單，使用前要先將CORS_ALLOW_ALL_ORIGINS註解起來
+# CORS_ALLOWED_ORIGINS = [
+#     "http://127.0.0.1:8000",
+# ]
 
 # <--------自定義-------------------->
 
