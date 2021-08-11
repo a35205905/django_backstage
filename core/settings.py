@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework_simplejwt',
     'corsheaders',
+    'django_quill',
 
     # Custom
     'user',
@@ -164,6 +165,8 @@ LOGIN_REDIRECT_URL = os.path.join(API_PATH, 'model/user/')
 # 預設登出路由
 LOGOUT_REDIRECT_URL = os.path.join(API_PATH, 'login/')
 
+
+# djangorestframework
 REST_FRAMEWORK = {
     # API Docs
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.AutoSchema',
@@ -180,6 +183,8 @@ REST_FRAMEWORK = {
     ),
 }
 
+
+# djangorestframework-simplejwt
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
@@ -207,8 +212,31 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 
+# django-bootstrap4
 BOOTSTRAP4 = {
     'include_jquery': True,
+}
+
+# django-quill-editor
+QUILL_CONFIGS = {
+    'default':{
+        'theme': 'snow',
+        'modules': {
+            'syntax': True,
+            'toolbar': [
+                [
+                    {'font': []},
+                    {'header': []},
+                    {'align': []},
+                    'bold', 'italic', 'underline', 'strike', 'blockquote',
+                    {'color': []},
+                    {'background': []},
+                ],
+                ['code-block', 'link'],
+                ['clean'],
+            ]
+        }
+    }
 }
 
 # log日誌

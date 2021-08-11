@@ -24,6 +24,7 @@ djangorestframework-simplejwt = "*"
 cryptography = "*"
 django-environ = "*"
 django-cors-headers = "*"
+django-quill-editor = "*"
 
 [dev-packages]
 
