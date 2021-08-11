@@ -25,6 +25,7 @@ cryptography = "*"
 django-environ = "*"
 django-cors-headers = "*"
 django-quill-editor = "*"
+django-bootstrap-datepicker-plus = "*"
 
 [dev-packages]
 

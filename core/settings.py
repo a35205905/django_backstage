@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',
     'django_quill',
+    'bootstrap_datepicker_plus',
 
     # Custom
     'user',
