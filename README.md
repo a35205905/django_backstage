@@ -1,4 +1,4 @@
-# django_backstage 1.0
+# KIICMS 1.0
 
 ## 環境
 - MySQL：8.0
