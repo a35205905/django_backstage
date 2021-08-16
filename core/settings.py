@@ -233,7 +233,7 @@ QUILL_CONFIGS = {
                     {'color': []},
                     {'background': []},
                 ],
-                ['code-block', 'link'],
+                ['code-block', 'link', 'image'],
                 ['clean'],
             ]
         }
