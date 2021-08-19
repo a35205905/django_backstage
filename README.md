@@ -163,5 +163,27 @@ $ sudo service apache2 reload
 </VirtualHost>
 ```
 
+#### 中文檔名
+參考至[官方文件](https://docs.djangoproject.com/en/3.2/howto/deployment/wsgi/modwsgi/#basic-configuration)及[教學文章](https://itekblog.com/ascii-codec-cant-encode-characters-in-position/)
+
+至`/etc/apache2/envvars`更改下列設定
+```
+...
+## The locale used by some modules like mod_dav
+#export LANG=C
+export LANG='en_US.UTF-8'
+export LC_ALL='en_US.UTF-8'
+## Uncomment the following line to use the system default locale instead:
+#. /etc/default/locale
+
+#export LANG
+...
+```
+
+以`restart`方式重新啟動Apache
+```
+$ systemctl restart apache2
+```
+
 ### 部署完成:)
 http://localhost:80/
