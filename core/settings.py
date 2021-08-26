@@ -166,6 +166,8 @@ LOGIN_REDIRECT_URL = os.path.join(API_PATH, 'model/user/')
 # 預設登出路由
 LOGOUT_REDIRECT_URL = os.path.join(API_PATH, 'login/')
 
+# 每筆資料最大的大小
+DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880
 
 # djangorestframework
 REST_FRAMEWORK = {
