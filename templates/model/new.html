@@ -23,4 +23,56 @@
             </form>
         </div>
     </div>
+
+    <script>
+        allimagePreview();
+
+        // 將圖片上傳按鈕綁入預覽功能
+        function allimagePreview() {
+            let imageInputs = document.querySelectorAll(".form-group input.form-control-file[accept='image/*']");
+            imageInputs.forEach(item => {
+                // 建立圖片標籤
+                let group = item.closest('div.form-group');
+                let imgId = item.id.split('id_')
+                imgId.shift();
+                imgId = 'img_' + imgId.join('');
+                let img = document.createElement('img');
+                img.id = imgId;
+                img.style.width = '10%';
+                img.style.height = '10%';
+                imgHref = document.createElement('a');
+                imgHref.target = "_blank";
+                imgHref.rel = "noopener noreferrer";
+
+                // 編輯時圖片預覽
+                editImgHref = group.querySelector('a')
+                if (editImgHref) {
+                    imgHref.href = editImgHref.href;
+                    img.src = editImgHref.href;
+                }
+
+                imgHref.appendChild(img);
+                group.appendChild(imgHref);
+
+                // 圖片更換時預覽
+                item.onchange = () => {
+                    const selectedFile = item.files[0];
+                    imagePreview(imgHref, img, selectedFile)
+                }
+            });
+        }
+
+        function imagePreview(imgHref, img, selectedFile){
+            if(selectedFile) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    img.src = e.target.result;
+                }
+                reader.readAsDataURL(selectedFile);
+            } else {
+                img.src = '#';
+            }
+        }
+    </script>
+
 {% endblock %}
