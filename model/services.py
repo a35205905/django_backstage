@@ -2,6 +2,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.conf import settings
 from django.contrib.auth.models import Permission
 from django.core.exceptions import ValidationError
+from django.db.models import Q
 
 import logging
 import os
@@ -156,3 +157,27 @@ def form_save(form):
 
     logger.debug(instance)
     return instance
+
+
+def obejcts_search(model, objects, keyword=None):
+    try:
+        if keyword and hasattr(model, 'config'):
+            searchable = model.config.get('searchable')
+            if searchable:
+                # 如果有map的字串則取代
+                maps = searchable.get('maps')
+                if maps:
+                    keyword = maps.get(keyword, keyword)
+
+                # 進行模糊查詢(ex. title=keyword or content=keyword)
+                fitlers = Q()
+                for item in searchable.get('columns'):
+                    fitler = Q(**{item+'__contains': keyword})
+                    fitlers |= fitler
+                
+                objects = objects.filter(fitlers)
+
+    except Exception as e:
+        logging.warning(e)
+    
+    return objects

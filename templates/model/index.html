@@ -15,6 +15,10 @@
             {% elif model_permissions.add %}
                 <div class="row">
                     <div class="form-group col-md-11">
+                      <form class="form-inline my-2 my-lg-0" onsubmit="return serch()">
+                        <input class="form-control mr-sm-2" type="search" placeholder="搜尋..." aria-label="Search" id="searchIput" name="keyword">
+                        <button class="btn btn-outline-success my-2 my-sm-0">搜尋</button>
+                      </form>
                     </div>
                     <div class="form-group col-md-1">
                         <a href="/model/{{ model }}/new"><button type="button" class="btn btn-outline-primary">新增</button></a>
@@ -46,9 +50,16 @@
     </div>
 
     <script>
-        function delete_check(id){
-            $('#delete-modal-href').attr('href', '/model' + '/{{ model }}/' + id + '/delete/')
-            $('#delete-modal').modal('show');
-        }
+      function serch(){
+        let searchIput = document.querySelector('input#searchIput')
+        keyword = searchIput.value.trim();
+        window.location.search += 'keyword=' + keyword;
+        return false;
+      }
+
+      function delete_check(id){
+        $('#delete-modal-href').attr('href', '/model' + '/{{ model }}/' + id + '/delete/')
+        $('#delete-modal').modal('show');
+      }
     </script>
 {% endblock %}

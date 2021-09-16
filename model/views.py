@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import UserForm, UserEditForm, GroupForm
 from .tables import UserTable, GroupTable
-from .services import root_url, get_pascal_name, get_model_by_content_type, permission_check, get_model_permissions,\
-    get_view_permissions, form_save
+from .services import (
+    root_url, get_pascal_name, get_model_by_content_type, permission_check, get_model_permissions, get_view_permissions,
+    form_save, obejcts_search
+)
 from django.http import JsonResponse
 from utils.auth.decorator import user_passes_test
 from django.contrib.auth.decorators import login_required
@@ -16,7 +18,8 @@ logger = logging.getLogger(settings.LOGGING_ROLE)
 @user_passes_test(permission_check, login_url='/', redirect_field_name='')
 def index(request, model):
     _model = get_model_by_content_type(model)
-    _objects = _model.objects.all()
+    # 搜尋
+    _objects = obejcts_search(_model, _model.objects.all(), request.GET.get("keyword"))
     # 排序
     sort = request.GET.get('sort', '-id')
     # table 一定要為大駝峰命名(ex. UserTable)
