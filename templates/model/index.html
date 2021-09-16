@@ -53,7 +53,21 @@
       function serch(){
         let searchIput = document.querySelector('input#searchIput')
         keyword = searchIput.value.trim();
-        window.location.search += 'keyword=' + keyword;
+        if (keyword) {
+          parms = window.location.search.replace('?', '').split('&')
+          parms.forEach(item => {
+            if (item.includes('keyword=')) {
+              parms.splice(item, 1);
+            }
+          });
+          parms = parms.join('&');
+          if (parms) {
+            parms += '&'
+          }
+          window.location.search = parms + 'keyword=' + keyword;
+        } else {
+          window.location.search = '';
+        }
         return false;
       }
 
