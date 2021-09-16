@@ -14,7 +14,7 @@ class UserForm(ModelForm):
 
     class Meta:
         model = User
-        fields = ['username', 'password', 'first_name', 'groups', 'is_superuser']
+        fields = ['username', 'password', 'first_name', 'groups']
 
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -29,7 +29,7 @@ class UserForm(ModelForm):
 class UserEditForm(ModelForm):
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'groups', 'is_active', 'is_superuser']
+        fields = ['username', 'first_name', 'groups', 'is_active']
 
 
 class GroupForm(ModelForm):
