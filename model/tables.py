@@ -31,7 +31,7 @@ class UserTable(tables.Table):
     class Meta:
         model = User
         template_name = TEMPLATE_NAME
-        fields = ('id', "username", 'first_name', 'groups', 'is_active', 'is_superuser', 'last_login', 'manage')
+        fields = ('id', "username", 'first_name', 'groups', 'is_active', 'last_login', 'manage')
 
 
 class GroupTable(tables.Table):
