@@ -28,6 +28,7 @@ django-quill-editor = "*"
 django-bootstrap-datepicker-plus = "*"
 
 [dev-packages]
+ipython = "*"
 
 [requires]
 python_version = "3.6.9"
