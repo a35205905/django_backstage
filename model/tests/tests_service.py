@@ -1,7 +1,8 @@
 from django.test import TestCase
 from ..services import root_url, get_pascal_name, get_content_type_model, get_model_by_content_type, get_model_permissions,\
     permission_check, get_content_type, get_view_permissions
-from django.contrib.auth.models import User, Group, Permission, AnonymousUser
+from user.models import User
+from django.contrib.auth.models import Group, Permission, AnonymousUser
 from django.test.client import RequestFactory
 from django.conf import settings
 

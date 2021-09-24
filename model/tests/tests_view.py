@@ -1,5 +1,5 @@
 from django.test import TestCase
-from django.contrib.auth.models import User
+from user.models import User
 from django.conf import settings
 
 import logging
@@ -16,7 +16,7 @@ class ViewTests(TestCase):
         self.client.login(username='user', password='user')
 
     def test_get_list_page(self):
-        resp = self.client.get('/model/user/')
+        resp = self.client.get('/model/admin_user/')
         self.assertEqual(resp.status_code, 200)
         self.assertTemplateUsed(resp, 'model/index.html')
         # logger.debug(resp.content.decode())
@@ -28,7 +28,7 @@ class ViewTests(TestCase):
         # logger.debug(resp.content.decode())
 
     def test_get_new_page(self):
-        resp = self.client.get('/model/user/new/')
+        resp = self.client.get('/model/admin_user/new/')
         self.assertEqual(resp.status_code, 200)
         self.assertTemplateUsed(resp, 'model/new.html')
         # logger.debug(resp.content.decode())
@@ -41,7 +41,7 @@ class ViewTests(TestCase):
 
     def test_get_edit_page(self):
         user = User.objects.get(username='user')
-        resp = self.client.get('/model/user/{id}/edit/'.format(id=user.id))
+        resp = self.client.get('/model/admin_user/{id}/edit/'.format(id=user.id))
         self.assertEqual(resp.status_code, 200)
         self.assertTemplateUsed(resp, 'model/new.html')
         # logger.debug(resp.content.decode())
@@ -55,7 +55,7 @@ class ViewTests(TestCase):
 
     def test_get_delete_page(self):
         user = User.objects.get(username='user')
-        resp = self.client.get('/model/user/{id}/delete/'.format(id=user.id), follow=True)
+        resp = self.client.get('/model/admin_user/{id}/delete/'.format(id=user.id), follow=True)
         self.assertEqual(resp.status_code, 200)
         # 刪除使用者自己本身會強制登入並導回首頁
         self.assertTemplateUsed(resp, 'index.html')

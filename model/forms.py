@@ -1,10 +1,11 @@
 from django.forms import ModelForm, CharField, PasswordInput, ModelMultipleChoiceField
-from django.contrib.auth.models import User, Group, Permission
+from user.models import User
+from django.contrib.auth.models import Group, Permission
 from django.conf import settings
 from model.services import get_content_types
 
 
-class UserForm(ModelForm):
+class AdminUserForm(ModelForm):
     password = CharField(
         label="密碼",
         strip=False,
@@ -14,7 +15,7 @@ class UserForm(ModelForm):
 
     class Meta:
         model = User
-        fields = ['username', 'password', 'first_name', 'groups', 'is_superuser']
+        fields = ['username']
 
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -26,10 +27,10 @@ class UserForm(ModelForm):
         return user
 
 
-class UserEditForm(ModelForm):
+class AdminUserEditForm(ModelForm):
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'groups', 'is_active', 'is_superuser']
+        fields = ['username', 'groups', 'is_active']
 
 
 class GroupForm(ModelForm):

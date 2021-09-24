@@ -1,10 +1,12 @@
 from rest_framework import viewsets
 from django.shortcuts import get_object_or_404
-from django.contrib.auth.models import User
+from user.models import User
 from ..serializers.user_serializers import UserSerializer, RegistrationSerializer, PasswordSerializer
-from rest_framework.permissions import IsAdminUser, IsAuthenticated
+from ..utils.permissions import IsAdminUser
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import action
 from rest_framework.response import Response
+
 
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = User.objects.all()

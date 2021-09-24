@@ -169,6 +169,9 @@ LOGOUT_REDIRECT_URL = os.path.join(API_PATH, 'login/')
 # 每筆資料最大的大小
 DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880
 
+# 預設使用者模組
+AUTH_USER_MODEL = 'user.User'
+
 # djangorestframework
 REST_FRAMEWORK = {
     # API Docs
@@ -286,6 +289,6 @@ CORS_ALLOW_ALL_ORIGINS = True
 # <--------自定義-------------------->
 
 # 前端使用的model
-MODELS = ('user', 'group')
+MODELS = ('admin_user', 'group')
 # LOG預設角色
 LOGGING_ROLE = 'develop'
