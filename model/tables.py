@@ -1,5 +1,6 @@
 import django_tables2 as tables
-from django.contrib.auth.models import User, Group
+from user.models import User
+from django.contrib.auth.models import Group
 
 TEMPLATE_NAME = "django_tables2/bootstrap4.html"
 # 編輯、刪除按鈕頁面
@@ -20,18 +21,20 @@ def image_template_column(field):
     return tables.TemplateColumn(html, orderable=False)
 
 
-class UserTable(tables.Table):
+class AdminUserTable(tables.Table):
     manage = MANAGE
+    is_active = tables.Column(accessor='user.is_active')
 
-    def render_groups(self, value):
-        if value.all():
-            return ', '.join(tuple([group.name for group in value.all()]))
-        return '—'
+    def render_is_active(self, value, record):
+        if record.user.is_active:
+            return '啟用'
+        else:
+            return '停用'
 
     class Meta:
         model = User
         template_name = TEMPLATE_NAME
-        fields = ('id', "username", 'first_name', 'groups', 'is_active', 'last_login', 'manage')
+        fields = ('id', "user.username", 'is_active', 'user.last_login', 'user.created_at', 'user.updated_at', 'manage')
 
 
 class GroupTable(tables.Table):

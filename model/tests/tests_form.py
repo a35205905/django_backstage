@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.conf import settings
-from django.contrib.auth.models import User
+from user.models import User
 from io import BytesIO
 from PIL import Image
 from django.core.files.base import ContentFile

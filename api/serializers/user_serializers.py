@@ -1,24 +1,21 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
+from user.models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
-    full_name = serializers.SerializerMethodField()
-
-    # 全名
-    def get_full_name(self, obj):
-        return obj.get_full_name()
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'password', 'email',  'last_name', 'first_name', 'full_name', 'groups', 'is_staff',
-                  'is_active', 'is_superuser', 'last_login', 'date_joined')
+        fields = (
+            'id', 'username', 'password', 'groups', 'is_active', 'is_superuser', 'last_login', 'created_at', 'updated_at'
+        )
         extra_kwargs = {
             # 只允許寫入
             'password': {'write_only': True},
             # 只允許讀取
             'last_login': {'read_only': True},
-            'date_joined': {'read_only': True},
+            'created_at': {'read_only': True},
+            'updated_at': {'read_only': True},
         }
 
 
