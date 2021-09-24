@@ -159,7 +159,7 @@ def form_save(form):
     return instance
 
 
-def obejcts_search(model, objects, keyword=None):
+def objects_search(model, objects, keyword=None):
     try:
         if keyword and hasattr(model, 'config'):
             searchable = model.config.get('searchable')
