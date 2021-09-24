@@ -20,12 +20,12 @@ PyMySQL = "==0.10.0"
 djangorestframework = "*"
 markdown = "*"
 django-filter = "*"
-djangorestframework-simplejwt = "*"
 cryptography = "*"
 django-environ = "*"
 django-cors-headers = "*"
 django-quill-editor = "*"
 django-bootstrap-datepicker-plus = "*"
+djangorestframework-simplejwt = "*"
 
 [dev-packages]
 ipython = "*"
