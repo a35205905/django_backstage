@@ -169,13 +169,18 @@ def objects_search(model, objects, keyword=None):
                 if maps:
                     keyword = maps.get(keyword, keyword)
 
-                # 進行模糊查詢(ex. title=keyword or content=keyword)
-                fitlers = Q()
+                params = Q()
                 for item in searchable.get('columns'):
-                    fitler = Q(**{item+'__contains': keyword})
-                    fitlers |= fitler
-                
-                objects = objects.filter(fitlers)
+                    # 進行布林查詢(ex. status=True or status=False)
+                    if type(keyword) == bool:
+                        param = Q(**{item: keyword})
+                    # 進行模糊查詢(ex. title__contains=keyword or content__contains=keyword)
+                    else:
+                        param = Q(**{item + '__contains': keyword})
+                    params |= param
+
+                print(params)
+                objects = objects.filter(params)
 
     except Exception as e:
         logging.warning(e)

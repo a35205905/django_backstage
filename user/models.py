@@ -34,6 +34,23 @@ class User(AbstractBaseUser, PermissionsMixin):
 class AdminUser(models.Model):
     user = models.OneToOneField(User, verbose_name='使用者', on_delete=models.CASCADE)
 
+    # 每個模組的設定檔
+    config = {
+        'searchable': {
+            # 要搜尋的欄位
+            # 若要關聯查詢可以這麼做<relation>__<field>(ex. author__name)
+            'columns': [
+                'user__username',
+                'user__is_active'
+            ],
+            # 對應的字串(ex. 圖片: pic, 影片: video)
+            'maps': {
+                '啟用': True,
+                '停用': False,
+            }
+        }
+    }
+
     class Meta:
         verbose_name = '管理者'
         verbose_name_plural = '管理者'
