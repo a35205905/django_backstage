@@ -24,6 +24,7 @@ def image_template_column(field):
 class AdminUserTable(tables.Table):
     manage = MANAGE
     is_active = tables.Column(accessor='user.is_active')
+    group = tables.Column(accessor='user.groups')
 
     def render_is_active(self, value, record):
         if record.user.is_active:
@@ -31,10 +32,17 @@ class AdminUserTable(tables.Table):
         else:
             return '停用'
 
+    def render_group(self, value, record):
+        group = record.user.groups.first()
+        if group:
+            return record.user.groups.first()
+        else:
+            return '—'
+
     class Meta:
         model = User
         template_name = TEMPLATE_NAME
-        fields = ('id', "user.username", 'is_active', 'user.last_login', 'user.created_at', 'user.updated_at', 'manage')
+        fields = ('id', "user.username", "group", 'is_active', 'user.last_login', 'user.created_at', 'user.updated_at', 'manage')
 
 
 class GroupTable(tables.Table):
