@@ -26,6 +26,8 @@ django-cors-headers = "*"
 django-quill-editor = "*"
 django-bootstrap-datepicker-plus = "*"
 djangorestframework-simplejwt = "*"
+boto3 = "*"
+django-ses = "*"
 
 [dev-packages]
 ipython = "*"

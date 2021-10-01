@@ -32,5 +32,6 @@ urlpatterns = [
     path('', root, name='root'),
     path('admin/', admin.site.urls),
     path('model/', include('model.urls')),
+    path('mail/', include('mail.urls')),
     path('api/', include('api.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

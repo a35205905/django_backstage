@@ -15,7 +15,8 @@ import os
 import environ
 
 env = environ.Env(
-    DEBUG=(bool, False)
+    DEBUG=(bool, False),
+    MAIL_BCC=(list, [])
 )
 environ.Env.read_env()
 
@@ -58,6 +59,7 @@ INSTALLED_APPS = [
 
     # Custom
     'user',
+    'mail',
 ]
 
 MIDDLEWARE = [
@@ -285,6 +287,15 @@ CORS_ALLOW_ALL_ORIGINS = True
 # CORS_ALLOWED_ORIGINS = [
 #     "http://127.0.0.1:8000",
 # ]
+
+# AWS SES
+EMAIL_BACKEND = 'django_ses.SESBackend'
+MAIL_FROM_ADDRESS = env('MAIL_FROM_ADDRESS')
+MAIL_BCC = env('MAIL_BCC')
+AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+AWS_SES_REGION_NAME = env('AWS_SES_REGION_NAME')
+AWS_SES_REGION_ENDPOINT = env('AWS_SES_REGION_ENDPOINT')
 
 # <--------自定義-------------------->
 
