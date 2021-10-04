@@ -300,6 +300,9 @@ AWS_SES_REGION_ENDPOINT = env('AWS_SES_REGION_ENDPOINT')
 
 # <--------自定義-------------------->
 
+# Web URL
+WEB_URL = env('WEB_URL')
+
 # 前端使用的model
 MODELS = ('admin_user', 'group')
 # LOG預設角色

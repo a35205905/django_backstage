@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.template.loader import render_to_string
+from django.template.loader import get_template
 from django.core.mail import EmailMessage
 
 import logging
@@ -26,10 +26,7 @@ class BaseMail:
 
     def send(self, to):
         try:
-            body = render_to_string(
-                'mail/' + self.body + '.html',
-                self.body_params
-            )
+            body = get_template('mail/' + self.body + '.html',).render(self.body_params)
 
             if isinstance(to, str):
                 to = [to]
@@ -42,6 +39,7 @@ class BaseMail:
                 self.bcc  # 密件副本
             )
 
+            email.content_subtype = "html"
             email.send()
             logger.info('Mail Success')
 
