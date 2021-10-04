@@ -4,7 +4,7 @@ from ..serializers.group_serializers import GroupSerializer
 from ..utils.permissions import IsAdminUser
 
 
-class GroupViewSet(viewsets.ReadOnlyModelViewSet):
+class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
     permission_classes = [IsAdminUser]
