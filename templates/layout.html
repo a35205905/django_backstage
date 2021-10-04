@@ -50,7 +50,10 @@
         {% block body %}{% endblock %}
     </div>
 
+    <script src="{% static 'package/js-cookie/js.cookie.min.js' %}"></script>
     <script>
+        const csrfToken = Cookies.get('csrftoken');
+
         $.ajax({
             url: "/model/view_permissions/",
             dataType: "json",
