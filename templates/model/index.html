@@ -14,14 +14,14 @@
             {% if model == 'contact' %}
             {% elif model_permissions.add %}
                 <div class="row">
-                    <div class="form-group col-md-11">
+                    <div class="form-group col">
                       <form class="form-inline my-2 my-lg-0" onsubmit="return serch()">
                         <input class="form-control mr-sm-2" type="search" placeholder="搜尋..." aria-label="Search" id="searchIput" name="keyword">
                         <button class="btn btn-outline-success my-2 my-sm-0">搜尋</button>
                       </form>
                     </div>
-                    <div class="form-group col-md-1">
-                        <a href="/model/{{ model }}/new"><button type="button" class="btn btn-outline-primary">新增</button></a>
+                    <div class="form-group col">
+                        <a href="/model/{{ model }}/new"><button type="button" class="float-md-right btn btn-outline-primary">新增</button></a>
                     </div>
                 </div>
             {% endif %}
