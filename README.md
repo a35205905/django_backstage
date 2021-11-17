@@ -12,12 +12,10 @@
 $ pip3 install pipenv
 設定虛擬環境路徑
 $ export PIPENV_VENV_IN_PROJECT=1
-建立虛擬環境
-$ pipenv --three
+建立虛擬環境並安裝套件
+$ pipenv install 3.6.9
 進入虛擬環境
 $ pipenv shell
-安裝django package
-$ pipenv install
 ```
 
 ### .env
@@ -187,3 +185,10 @@ $ systemctl restart apache2
 
 ### 部署完成:)
 http://localhost:80/
+
+### API
+要特別提醒前端在串API時所有的router結尾都要加上`/`
+
+例如：`http://localhost:80/api/<xxx>/`
+
+也要注意當後台更換框架時要請前端視情況保留或是移除結尾`/`
