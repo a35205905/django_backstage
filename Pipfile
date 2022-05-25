@@ -27,7 +27,7 @@ django-quill-editor = "*"
 django-bootstrap-datepicker-plus = "*"
 boto3 = "*"
 django-ses = "*"
-pyjwt = "==1.7.1"
+pyjwt = "==2.4.0"
 djangorestframework-simplejwt = "==4.4.0"
 
 [dev-packages]
